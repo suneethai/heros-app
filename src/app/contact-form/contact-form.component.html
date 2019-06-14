@@ -1,0 +1,52 @@
+<!-- template drive 
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input required minlength="3" maxlength="10" pattern="asd" ngModel name="firstName" #firstName="ngModel"
+      id="firstName" type="text" class="form-control" (change)="log(firstName)" />
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">First name is required</div>
+      <div *ngIf="firstName.errors.minlength">First name should be min 3 characters</div>
+      <div *ngIf="firstName.errors.pattern">First name doesn't match pattern </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea ngModel name="comment" #comment="ngModel" id="comment" type="text" class="form-control" cols="30"
+      row="10"> </textarea>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form> -->
+
+<div *ngIf="!name; else formInfo">
+  <form [formGroup]="fGroup" (ngSubmit)="addPost(fGroup.value)">
+    <div class="form-container">
+      <label>Name
+        <input type="text" formControlName="name" />
+      </label>
+      <div class="alert" *ngIf="!fGroup.controls['name'].valid && fGroup.controls['name'].touched">{{ titleAlert }}
+      </div>
+
+      <label>Description
+        <textarea formControlName="desc"></textarea>
+      </label>
+
+      <div class="alert" *ngIf="!fGroup.controls['desc'].valid && fGroup.controls['desc'].touched">
+        You must specify a description that's between 30 and 500 characters.</div>
+
+      <label for="validate">Min of 3 chars</label>
+      <input type="checkbox" name="validate" formControlName="validate" value="1" /> On
+
+      <input type="submit" class="button expanded" value="Submit Form" [disabled]="!fGroup.valid" />
+    </div>
+  </form>
+</div>
+
+<ng-template #formInfo>
+  <div class="form-container">
+    <div>
+      <h1> {{name}} </h1>
+      <p> {{desc}} </p>
+    </div>
+  </div>
+</ng-template>

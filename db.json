@@ -1,0 +1,18 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "name": "The terminator",
+      "genre": "Sci-fi",
+      "releaseYear": "1984",
+      "image": "none"
+    },
+    {
+      "name": "saho",
+      "image": "none",
+      "genre": "action",
+      "releaseYear": "2019",
+      "id": 2
+    }
+  ]
+}
